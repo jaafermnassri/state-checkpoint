@@ -1,31 +1,34 @@
 
+import React,{ Component } from 'react';
 import './App.css';
-import { Component } from 'react';
-import { render } from '@testing-library/react';
-import Counter from "./component/counter"
+import Profile from './component/counter';
+import 'bootstrap/dist/css/bootstrap.min.css' ;
 
-function App() {
-  class App extends Component {
-    state = {show:false, counterApp:0}
-    componentDidMount() {
-      setInterval(()=> {
-        this.setState({counterApp:this.state.counterApp+1})
-      },1000)
-    }
-  }
- 
-  render() ;{
+class App extends Component {
+  state = {
+    data: {
+      fullname: "Jaafer Mnassri",
+      bio: "Im Full Stack Developer JS Engineer /React, experimenting with HTML, CSS, JavaScript, React, API, MongoDB, Express and Node JS. ",
+      profession: " Developer and Graphic Designer",
+      imag: "/414c8d65d2884a1b510f62928415532d.png",
+    },
+    show: false,
+    count: 0,
+    date: new Date(),
+  };
 
+  render() {
     return (
-      <div >
-        <h1>{this.state.counterApp}</h1>
-        <button onClick={()=>this.setState({show:!this.state.show})}>{this.state.show ? "hide":"show"}</button>
-        {this.state.show ? <Counter/> : null}
+      <div>
+        <button
+          className="btn  btn-primary al"
+          onClick={() => this.setState({ show: !this.state.show })}
+        >
+          {this.state.show ? "hide" : "show"}
+        </button>
+        {this.state.show ? <Profile info={this.state.data} /> : null}
       </div>
     );
   }
-
-
 }
-
 export default App;
